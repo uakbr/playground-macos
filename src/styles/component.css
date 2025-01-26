@@ -44,8 +44,8 @@
   @apply hidden;
 }
 
-.traffic-lights:hover .icon {
-  @apply block;
+.traffic-lights .icon {
+  @apply hidden;
 }
 
 /* --------- dock --------- */
@@ -54,14 +54,24 @@
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.17);
 }
 
+.mobile-dock ul {
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3); /* Increased shadow for mobile dock */
+}
+
 .dock li .tooltip {
   @apply hidden;
   top: calc(-100% - 10px);
 }
 
-.dock li:hover .tooltip {
-  @apply block;
-  box-shadow: hsla(0deg, 0%, 0%, 20%) 0px 1px 5px 2px, 0 0 0 0 white;
+/* --------- touch manipulation feedback --------- */
+.touch-manipulation {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* --------- slider --------- */
