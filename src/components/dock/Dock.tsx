@@ -50,7 +50,10 @@ export default function Dock({
         onMouseLeave={() => !isMobile && mouseX.set(null)}
         style={{
           height: `${(dockSize + (isMobile ? 12 : 15)) / 16}rem`,
-          padding: "4px 8px"
+          paddingTop: "4px",
+          paddingBottom: "4px",
+          paddingLeft: "8px",
+          paddingRight: "8px"
         }}
       >
         {apps.map((app) => (
