@@ -1,5 +1,6 @@
 import { useMotionValue } from "framer-motion";
 import { apps } from "~/configs";
+import { useStore } from "~/stores/useStore";
 
 interface DockProps {
   open: (id: string) => void;
@@ -9,6 +10,7 @@ interface DockProps {
   showLaunchpad: boolean;
   toggleLaunchpad: (target: boolean) => void;
   hide: boolean;
+  isMobile: boolean;
 }
 
 export default function Dock({
@@ -16,7 +18,8 @@ export default function Dock({
   showApps,
   showLaunchpad,
   toggleLaunchpad,
-  hide
+  hide,
+  isMobile
 }: DockProps) {
   const { dockSize, dockMag } = useStore((state) => ({
     dockSize: state.dockSize,
@@ -38,14 +41,18 @@ export default function Dock({
       className={`dock fixed inset-x-0 mx-auto bottom-1 ${hide ? "z-0" : "z-50"}`}
       w="full sm:max"
       overflow="x-scroll sm:x-visible"
+      style={{
+        WebkitOverflowScrolling: "touch"
+      }}
     >
       <ul
         className="flex space-x-2 px-2 backdrop-blur-2xl bg-c-white/20"
         border="~ c-400/40 rounded-none sm:rounded-xl"
-        onMouseMove={(e) => mouseX.set(e.nativeEvent.x)}
-        onMouseLeave={() => mouseX.set(null)}
+        onMouseMove={(e) => !isMobile && mouseX.set(e.nativeEvent.x)}
+        onMouseLeave={() => !isMobile && mouseX.set(null)}
         style={{
-          height: `${(dockSize + 15) / 16}rem`
+          height: `${(dockSize + (isMobile ? 5 : 15)) / 16}rem`,
+          minWidth: "min-content"
         }}
       >
         {apps.map((app) => (

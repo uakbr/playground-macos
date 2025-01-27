@@ -6,7 +6,7 @@ const apps: AppsData[] = [
     id: "launchpad",
     title: "Launchpad",
     desktop: false,
-    img: "img/icons/launchpad.png"
+    img: "/img/icons/launchpad.png"
   },
   {
     id: "bear",
@@ -16,7 +16,7 @@ const apps: AppsData[] = [
     height: 500,
     show: true,
     y: -40,
-    img: "img/icons/bear.png",
+    img: "/img/icons/bear.png",
     content: <Bear />
   },
   {
@@ -26,7 +26,7 @@ const apps: AppsData[] = [
     width: 600,
     height: 580,
     y: -20,
-    img: "img/icons/typora.png",
+    img: "/img/icons/typora.png",
     content: <Typora />
   },
   {
@@ -37,7 +37,7 @@ const apps: AppsData[] = [
     minWidth: 375,
     minHeight: 200,
     x: -20,
-    img: "img/icons/safari.png",
+    img: "/img/icons/safari.png",
     content: <Safari />
   },
   {
@@ -48,14 +48,14 @@ const apps: AppsData[] = [
     height: 600,
     x: 80,
     y: -30,
-    img: "img/icons/vscode.png",
+    img: "/img/icons/vscode.png",
     content: <VSCode />
   },
   {
     id: "facetime",
     title: "FaceTime",
     desktop: true,
-    img: "img/icons/facetime.png",
+    img: "/img/icons/facetime.png",
     width: 500 * 1.7,
     height: 500 + appBarHeight,
     minWidth: 350 * 1.7,

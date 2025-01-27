@@ -2,6 +2,7 @@ import React from "react";
 import { apps, wallpapers } from "~/configs";
 import { minMarginY } from "~/utils";
 import type { MacActions } from "~/types";
+import { useWindowSize } from "~/hooks";
 
 interface DesktopState {
   showApps: {
@@ -24,6 +25,9 @@ interface DesktopState {
 }
 
 export default function Desktop(props: MacActions) {
+  const { winWidth } = useWindowSize();
+  const isMobile = winWidth < 640; // sm breakpoint
+
   const [state, setState] = useState({
     showApps: {},
     appsZ: {},
@@ -252,6 +256,7 @@ export default function Desktop(props: MacActions) {
         restartMac={props.restartMac}
         toggleSpotlight={toggleSpotlight}
         hide={state.hideDockAndTopbar}
+        isMobile={isMobile}
         setSpotlightBtnRef={setSpotlightBtnRef}
       />
 
@@ -280,6 +285,7 @@ export default function Desktop(props: MacActions) {
         showLaunchpad={state.showLaunchpad}
         toggleLaunchpad={toggleLaunchpad}
         hide={state.hideDockAndTopbar}
+        isMobile={isMobile}
       />
     </div>
   );

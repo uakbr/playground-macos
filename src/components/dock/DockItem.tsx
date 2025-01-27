@@ -99,12 +99,18 @@ export default function DockItem({
     <li
       id={`dock-${id}`}
       onClick={desktop || id === "launchpad" ? () => openApp(id) : () => {}}
-      className="relative flex flex-col justify-end mb-1 touch-manipulation" // Added touch-manipulation for mobile touch
+      className="relative flex flex-col justify-end mb-1 touch-manipulation"
+      style={{
+        WebkitTapHighlightColor: "transparent" // Remove tap highlight on mobile
+      }}
     >
       <p
         className="tooltip absolute inset-x-0 mx-auto w-max rounded-md bg-c-300/80"
         p="x-3 y-1"
         text="sm c-black"
+        style={{
+          display: isMobile ? "none" : "block" // Hide tooltips on mobile
+        }}
       >
         {title}
       </p>
