@@ -116,7 +116,11 @@ export default function DockItem({
             alt={title}
             title={title}
             draggable={false}
-            style={isMobile ? { width: `${dockSize * 0.6 / 16}rem` } : { width, willChange: "width" }} // Reduced icon size on mobile
+            style={
+              isMobile
+                ? { width: `${(dockSize * 0.6) / 16}rem` }
+                : { width, willChange: "width" }
+            } // Reduced icon size on mobile
           />
         </a>
       ) : (
@@ -126,7 +130,11 @@ export default function DockItem({
           alt={title}
           title={title}
           draggable={false}
-          style={isMobile ? { width: `${dockSize * 0.6 / 16}rem` } : { width, willChange: "width" }} // Reduced icon size on mobile
+          style={
+            isMobile
+              ? { width: `${(dockSize * 0.6) / 16}rem` }
+              : { width, willChange: "width" }
+          } // Reduced icon size on mobile
         />
       )}
       <div

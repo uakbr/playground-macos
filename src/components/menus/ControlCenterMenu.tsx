@@ -69,13 +69,15 @@ export default function ControlCenterMenu({
 
   return (
     <div
-      className={`shadow-menu p-2.5 text-c-black bg-c-100/70 ${isMobile ? 'mobile-cc-menu' : 'w-80 h-96'}`} /* Added mobile-cc-menu class for mobile specific styling and adjusted size */
+      className={`shadow-menu p-2.5 text-c-black bg-c-100/70 ${isMobile ? "mobile-cc-menu" : "w-80 h-96"}`} /* Added mobile-cc-menu class for mobile specific styling and adjusted size */
       pos="fixed top-9.5 right-0 sm:right-1.5"
       border="~ menu rounded-2xl"
-      grid={`${isMobile ? '~ cols-2 rows-8 gap-1' : '~ cols-4 rows-5 gap-2'}`} /* Adjusted grid for mobile */
+      grid={`${isMobile ? "~ cols-2 rows-8 gap-1" : "~ cols-4 rows-5 gap-2"}`} /* Adjusted grid for mobile */
       ref={controlCenterRef}
     >
-      <div className="cc-grid row-span-1 sm:row-span-2 col-span-1 sm:col-span-2 p-2 flex flex-col justify-around"> {/* Adjusted row-span for mobile */}
+      <div className="cc-grid row-span-1 sm:row-span-2 col-span-1 sm:col-span-2 p-2 flex flex-col justify-around">
+        {" "}
+        {/* Adjusted row-span for mobile */}
         <div className="hstack space-x-2">
           <div className={`${wifi ? "cc-btn" : "cc-btn-active"}`} onClick={toggleWIFI}>
             <span className="i-material-symbols:wifi text-base" />
@@ -110,7 +112,9 @@ export default function ControlCenterMenu({
           </div>
         </div>
       </div>
-      <div className="cc-grid col-span-1 sm:col-span-2 p-2 hstack space-x-3"> {/* Adjusted col-span for mobile */}
+      <div className="cc-grid col-span-1 sm:col-span-2 p-2 hstack space-x-3">
+        {" "}
+        {/* Adjusted col-span for mobile */}
         <div className={`${dark ? "cc-btn" : "cc-btn-active"}`} onClick={toggleDark}>
           {dark ? (
             <span className="i-ion:moon text-base" />
@@ -139,15 +143,24 @@ export default function ControlCenterMenu({
           {fullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
         </span>
       </div>
-      <div className="cc-grid col-span-2 sm:col-span-4 px-2.5 py-2 space-y-1 flex flex-col justify-around"> {/* Adjusted col-span for mobile */}
+      <div className="cc-grid col-span-2 sm:col-span-4 px-2.5 py-2 space-y-1 flex flex-col justify-around">
+        {" "}
+        {/* Adjusted col-span for mobile */}
         <span className="font-medium ml-0.5">Display</span>
         <SliderComponent icon="i-ion:sunny" value={brightness} setValue={setBrightness} />
       </div>
-      <div className="cc-grid col-span-2 sm:col-span-4 px-2.5 py-2 space-y-1 flex flex-col justify-around"> {/* Adjusted col-span for mobile */}
+      <div className="cc-grid col-span-2 sm:col-span-4 px-2.5 py-2 space-y-1 flex flex-col justify-around">
+        {" "}
+        {/* Adjusted col-span for mobile */}
         <span className="font-medium ml-0.5">Sound</span>
         <SliderComponent icon="i-ion:volume-high" value={volume} setValue={setVolume} />
       </div>
-      <div className="cc-grid col-span-2 sm:col-span-4 hstack space-x-2.5" p="y-2 l-2 r-4"> {/* Adjusted col-span for mobile */}
+      <div
+        className="cc-grid col-span-2 sm:col-span-4 hstack space-x-2.5"
+        p="y-2 l-2 r-4"
+      >
+        {" "}
+        {/* Adjusted col-span for mobile */}
         <img className="w-12 rounded-lg" src={music.cover} alt="cover art" />
         <div flex-1>
           <div className="font-medium">{music.title}</div>

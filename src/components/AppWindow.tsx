@@ -152,30 +152,33 @@ const Window = (props: WindowProps) => {
         height: height
       }}
       position={{
-        x: isMobile || props.max // Position at top left on mobile or maximized
-          ? winWidth // because of boundary
-          : Math.min(
-              // "winWidth * 2" because of the boundary for windows
-              winWidth * 2 - minMarginX,
-              Math.max(
-                // "+ winWidth" because we add a boundary for windows
-                winWidth - state.width + minMarginX,
-                state.x
+        x:
+          isMobile || props.max // Position at top left on mobile or maximized
+            ? winWidth // because of boundary
+            : Math.min(
+                // "winWidth * 2" because of the boundary for windows
+                winWidth * 2 - minMarginX,
+                Math.max(
+                  // "+ winWidth" because we add a boundary for windows
+                  winWidth - state.width + minMarginX,
+                  state.x
+                )
+              ),
+        y:
+          isMobile || props.max // Position at top left on mobile or maximized
+            ? -minMarginY // because of boundary
+            : Math.min(
+                // "- minMarginY" because of the boundary for windows
+                winHeight - minMarginY - (dockSize + 15 + minMarginY),
+                Math.max(0, state.y)
               )
-            ),
-        y: isMobile || props.max // Position at top left on mobile or maximized
-          ? -minMarginY // because of boundary
-          : Math.min(
-              // "- minMarginY" because of the boundary for windows
-              winHeight - minMarginY - (dockSize + 15 + minMarginY),
-              Math.max(0, state.y)
-            )
       }}
       onDragStop={(e, d) => {
         if (!isMobile) setState({ ...state, x: d.x, y: d.y }); // Disable dragging on mobile
       }}
       onResizeStop={(e, direction, ref, delta, position) => {
-        if (!isMobile) { // Disable resizing on mobile
+        if (!isMobile) {
+          // Disable resizing on mobile
           setState({
             ...state,
             width: parseInt(ref.style.width),
@@ -193,12 +196,14 @@ const Window = (props: WindowProps) => {
       lockAspectRatioExtraHeight={props.aspectRatio ? appBarHeight : undefined}
       style={{ zIndex: props.z }}
       onMouseDown={() => props.focus(props.id)}
-      className={`overflow-hidden ${round} ${border} shadow-lg shadow-black/30 ${minimized} ${isMobile ? 'mobile-window' : ''}`} /* Added mobile-window class for mobile specific styling */
+      className={`overflow-hidden ${round} ${border} shadow-lg shadow-black/30 ${minimized} ${isMobile ? "mobile-window" : ""}`} /* Added mobile-window class for mobile specific styling */
       id={`window-${props.id}`}
     >
       <div
         className="window-bar relative h-10 text-center bg-c-200 touch-manipulation" /* Increased height for mobile touch */
-        onDoubleClick={() => !disableMax && !isMobile && props.setMax(props.id)} /* Disable maximize on double click for mobile */
+        onDoubleClick={() =>
+          !disableMax && !isMobile && props.setMax(props.id)
+        } /* Disable maximize on double click for mobile */
       >
         <TrafficLights
           id={props.id}

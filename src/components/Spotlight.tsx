@@ -133,8 +133,11 @@ export default function Spotlight({
           onClick={() => handleClick(app.id)}
           onDoubleClick={() => !isMobile && handleDoubleClick(app.id)} // Disable double click on mobile
         >
-          <div className="w-12 sm:w-8 flex-center"> {/* Increased width for mobile icon */}
-            <img w-8 sm:w-5 src={app.img} alt={app.title} title={app.title} /> {/* Increased icon size for mobile */}
+          <div className="w-12 sm:w-8 flex-center">
+            {" "}
+            {/* Increased width for mobile icon */}
+            <img w-8 sm:w-5 src={app.img} alt={app.title} title={app.title} />{" "}
+            {/* Increased icon size for mobile */}
           </div>
           <div className="flex-1 hstack overflow-hidden whitespace-nowrap">
             {app.title}
@@ -251,7 +254,7 @@ export default function Spotlight({
 
   return (
     <div
-      className={`spotlight ${isMobile ? 'mobile-spotlight' : ''}`} /* Added mobile-spotlight class for mobile specific styling */
+      className={`spotlight ${isMobile ? "mobile-spotlight" : ""}`} /* Added mobile-spotlight class for mobile specific styling */
       onKeyDown={handleKeyPress}
       onClick={() => inputRef.current?.focus()}
       ref={spotlightRef}
@@ -287,10 +290,12 @@ export default function Spotlight({
       </div>
       {searchText !== "" && (
         <div flex h-85 bg-transparent border="t menu">
-          <div w="full" sm:w-72 border="r menu" p="x-2.5" overflow-y-scroll> {/* Full width results on mobile */}
+          <div w="full" sm:w-72 border="r menu" p="x-2.5" overflow-y-scroll>
+            {" "}
+            {/* Full width results on mobile */}
             {appList}
           </div>
-          { !isMobile && curDetails && ( /* Hide details pane on mobile */
+          {!isMobile && curDetails /* Hide details pane on mobile */ && (
             <div className="flex-1 vstack">
               <div className="w-4/5 h-56" flex="center col" border="b menu">
                 <img

@@ -23,9 +23,9 @@ const TopBarItem = forwardRef(
     return (
       <div
         ref={ref}
-        className={`hstack space-x-1 h-10 px-2 cursor-default rounded touch-manipulation ${hide} ${bg} ${ /* Increased height and padding for mobile touch */ }
+        className={`hstack space-x-1 h-10 px-2 cursor-default rounded touch-manipulation ${hide} ${bg} ${
           props.className || ""
-        }`}
+        }`} /* Increased height and padding for mobile touch */
         onClick={props.onClick}
         onMouseEnter={props.onMouseEnter}
       >

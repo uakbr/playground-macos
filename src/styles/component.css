@@ -8,20 +8,10 @@
 
 .spotlight {
   @apply fixed z-20 h-max top-1/4 -mt-16 w-165 -ml-82.5 left-1/2 rounded-lg backdrop-blur-2xl shadow-2xl shadow-black/40 bg-c-100/80 border border-menu;
-/* --------- Login --------- */
-
-.login input::placeholder {
-  @apply text-white;
-}
-
-/* --------- spotlight --------- */
-
-.spotlight {
-  @apply fixed z-20 h-max top-1/4 -mt-16 w-165 -ml-82.5 left-1/2 rounded-lg backdrop-blur-2xl shadow-2xl shadow-black/40 bg-c-100/80 border border-menu;
 }
 
 .mobile-spotlight {
-  @apply top-0 left-0 mt-0 ml-0 w-full h-full rounded-none; /* Full width and height for mobile spotlight */
+  @apply top-0 left-0 mt-0 ml-0 w-full h-full rounded-none;
 }
 
 .spotlight input::placeholder {
@@ -47,11 +37,11 @@
 }
 
 .mobile-window {
-  @apply rounded-none !important; /* Override rounded corners on mobile windows */
+  @apply rounded-none !important;
 }
 
 .innner-window {
-  height: calc(100% - 2.5rem); /* Increased title bar height for mobile */
+  height: calc(100% - 2.5rem);
 }
 
 .safari-content {
@@ -69,17 +59,18 @@
 /* --------- dock --------- */
 
 .dock {
-  @apply bottom-4 sm:bottom-1; /* Increased bottom margin on mobile */
+  @apply bottom-4 sm:bottom-1;
 }
 
 .mobile-dock ul {
-  @apply rounded-full !important; /* Rounded dock on mobile */
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3); /* Increased shadow for mobile dock */
+  @apply rounded-full !important;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 .dock ul {
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.17);
 }
+
 /* --------- touch manipulation feedback --------- */
 .touch-manipulation {
   -webkit-tap-highlight-color: transparent;
@@ -120,7 +111,6 @@
   @apply hidden;
 }
 
-
 /*
   Credits: W3 Schools: https://www.w3schools.com/howto/howto_css_switch.asp
 */
@@ -158,5 +148,5 @@
 
 /* --------- Control Center Menu --------- */
 .mobile-cc-menu {
-  @apply top-12 left-4 right-4 bottom-16 rounded-3xl !important; /* Full width and height for mobile CC menu */
+  @apply top-12 left-4 right-4 bottom-16 rounded-3xl !important;
 }
