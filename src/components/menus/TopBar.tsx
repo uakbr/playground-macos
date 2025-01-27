@@ -23,7 +23,7 @@ const TopBarItem = forwardRef(
     return (
       <div
         ref={ref}
-        className={`hstack space-x-1 h-6 px-1 cursor-default rounded ${hide} ${bg} ${
+        className={`hstack space-x-1 h-10 px-2 cursor-default rounded touch-manipulation ${hide} ${bg} ${ /* Increased height and padding for mobile touch */ }
           props.className || ""
         }`}
         onClick={props.onClick}

@@ -75,6 +75,7 @@ interface DockItemProps {
   link?: string;
   dockSize: number;
   dockMag: number;
+  isMobile: boolean; // New prop to indicate mobile view
 }
 
 export default function DockItem({
@@ -87,7 +88,8 @@ export default function DockItem({
   isOpen,
   link,
   dockSize,
-  dockMag
+  dockMag,
+  isMobile // Destructure isMobile prop
 }: DockItemProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const { width } = useDockHoverAnimation(mouseX, imgRef, dockSize, dockMag);
@@ -97,7 +99,7 @@ export default function DockItem({
     <li
       id={`dock-${id}`}
       onClick={desktop || id === "launchpad" ? () => openApp(id) : () => {}}
-      className="relative flex flex-col justify-end mb-1"
+      className="relative flex flex-col justify-end mb-1 touch-manipulation" // Added touch-manipulation for mobile touch
     >
       <p
         className="tooltip absolute inset-x-0 mx-auto w-max rounded-md bg-c-300/80"
@@ -114,7 +116,7 @@ export default function DockItem({
             alt={title}
             title={title}
             draggable={false}
-            style={winWidth < 640 ? {} : { width, willChange: "width" }}
+            style={isMobile ? { width: `${dockSize * 0.6 / 16}rem` } : { width, willChange: "width" }} // Reduced icon size on mobile
           />
         </a>
       ) : (
@@ -124,7 +126,7 @@ export default function DockItem({
           alt={title}
           title={title}
           draggable={false}
-          style={winWidth < 640 ? {} : { width, willChange: "width" }}
+          style={isMobile ? { width: `${dockSize * 0.6 / 16}rem` } : { width, willChange: "width" }} // Reduced icon size on mobile
         />
       )}
       <div

@@ -3,5 +3,5 @@
 }
 
 html, body, #root {
-  @apply h-full overflow-hidden;
+  @apply h-full overflow-x-hidden; /* Changed to overflow-x-hidden to prevent horizontal scroll */
 }

@@ -8,6 +8,20 @@
 
 .spotlight {
   @apply fixed z-20 h-max top-1/4 -mt-16 w-165 -ml-82.5 left-1/2 rounded-lg backdrop-blur-2xl shadow-2xl shadow-black/40 bg-c-100/80 border border-menu;
+/* --------- Login --------- */
+
+.login input::placeholder {
+  @apply text-white;
+}
+
+/* --------- spotlight --------- */
+
+.spotlight {
+  @apply fixed z-20 h-max top-1/4 -mt-16 w-165 -ml-82.5 left-1/2 rounded-lg backdrop-blur-2xl shadow-2xl shadow-black/40 bg-c-100/80 border border-menu;
+}
+
+.mobile-spotlight {
+  @apply top-0 left-0 mt-0 ml-0 w-full h-full rounded-none; /* Full width and height for mobile spotlight */
 }
 
 .spotlight input::placeholder {
@@ -32,8 +46,12 @@
   left: -100%;
 }
 
+.mobile-window {
+  @apply rounded-none !important; /* Override rounded corners on mobile windows */
+}
+
 .innner-window {
-  height: calc(100% - 1.5rem);
+  height: calc(100% - 2.5rem); /* Increased title bar height for mobile */
 }
 
 .safari-content {
@@ -44,25 +62,24 @@
   @apply hidden;
 }
 
-.traffic-lights .icon {
-  @apply hidden;
+.traffic-lights:hover .icon {
+  @apply block;
 }
 
 /* --------- dock --------- */
 
-.dock ul {
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.17);
+.dock {
+  @apply bottom-4 sm:bottom-1; /* Increased bottom margin on mobile */
 }
 
 .mobile-dock ul {
+  @apply rounded-full !important; /* Rounded dock on mobile */
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3); /* Increased shadow for mobile dock */
 }
 
-.dock li .tooltip {
-  @apply hidden;
-  top: calc(-100% - 10px);
+.dock ul {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.17);
 }
-
 /* --------- touch manipulation feedback --------- */
 .touch-manipulation {
   -webkit-tap-highlight-color: transparent;
@@ -72,6 +89,16 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.dock li .tooltip {
+  @apply hidden;
+  top: calc(-100% - 10px);
+}
+
+.dock li:hover .tooltip {
+  @apply block;
+  box-shadow: hsla(0deg, 0%, 0%, 20%) 0px 1px 5px 2px, 0 0 0 0 white;
 }
 
 /* --------- slider --------- */
@@ -127,4 +154,9 @@
 
 .switch-toggle input:focus + .slider-toggle {
   box-shadow: 0 0 1px #3b82f6;
+}
+
+/* --------- Control Center Menu --------- */
+.mobile-cc-menu {
+  @apply top-12 left-4 right-4 bottom-16 rounded-3xl !important; /* Full width and height for mobile CC menu */
 }

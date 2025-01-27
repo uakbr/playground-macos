@@ -14,7 +14,7 @@ const MenuItem = (props: MenuItemProps) => {
   return (
     <li
       onClick={props.onClick}
-      className="leading-6 cursor-default px-2.5 rounded hover:text-white hover:bg-blue-500"
+      className="leading-8 cursor-default px-5 rounded touch-manipulation hover:text-white hover:bg-blue-500" /* Increased padding and touch-manipulation for mobile touch */
     >
       {props.children}
     </li>

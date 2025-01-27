@@ -36,6 +36,8 @@ export default function Spotlight({
 }: SpotlightProps) {
   const spotlightRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { winWidth } = useWindowSize();
+  const isMobile = winWidth < 640;
 
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [clickedID, setClickedID] = useState("");
@@ -126,13 +128,13 @@ export default function Spotlight({
         <li
           id={`spotlight-${app.id}`}
           key={`spotlight-${app.id}`}
-          className={`pr-1 h-7 w-full flex rounded ${bg} ${text} cursor-default`}
+          className={`pr-1 h-10 sm:h-7 w-full flex rounded ${bg} ${text} cursor-default touch-manipulation`} /* Increased height for mobile touch */
           data-app-type={type}
           onClick={() => handleClick(app.id)}
-          onDoubleClick={() => handleDoubleClick(app.id)}
+          onDoubleClick={() => !isMobile && handleDoubleClick(app.id)} // Disable double click on mobile
         >
-          <div className="w-8 flex-center">
-            <img w-5 src={app.img} alt={app.title} title={app.title} />
+          <div className="w-12 sm:w-8 flex-center"> {/* Increased width for mobile icon */}
+            <img w-8 sm:w-5 src={app.img} alt={app.title} title={app.title} /> {/* Increased icon size for mobile */}
           </div>
           <div className="flex-1 hstack overflow-hidden whitespace-nowrap">
             {app.title}
@@ -249,13 +251,13 @@ export default function Spotlight({
 
   return (
     <div
-      className="spotlight"
+      className={`spotlight ${isMobile ? 'mobile-spotlight' : ''}`} /* Added mobile-spotlight class for mobile specific styling */
       onKeyDown={handleKeyPress}
       onClick={() => inputRef.current?.focus()}
       ref={spotlightRef}
     >
       <div
-        className="w-full h-12 sm:h-14 rounded-lg bg-transparent"
+        className="w-full h-16 sm:h-14 rounded-lg bg-transparent" /* Increased height for mobile input */
         grid="~ cols-8 sm:cols-11"
       >
         <div className="col-start-1 col-span-1 flex-center">
@@ -265,7 +267,7 @@ export default function Spotlight({
           ref={inputRef}
           className={`col-start-2 col-span-7 ${
             curDetails ? "sm:col-span-9" : "sm:col-span-10"
-          } bg-transparent no-outline px-1`}
+          } bg-transparent no-outline px-1 text-lg sm:text-xl`} /* Increased font size for mobile input */
           text="c-black xl sm:2xl"
           placeholder="Spotlight Search"
           value={searchText}
@@ -285,10 +287,10 @@ export default function Spotlight({
       </div>
       {searchText !== "" && (
         <div flex h-85 bg-transparent border="t menu">
-          <div w="32 sm:72" border="r menu" p="x-2.5" overflow-y-scroll>
+          <div w="full" sm:w-72 border="r menu" p="x-2.5" overflow-y-scroll> {/* Full width results on mobile */}
             {appList}
           </div>
-          {curDetails && (
+          { !isMobile && curDetails && ( /* Hide details pane on mobile */
             <div className="flex-1 vstack">
               <div className="w-4/5 h-56" flex="center col" border="b menu">
                 <img
