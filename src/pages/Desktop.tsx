@@ -119,7 +119,8 @@ export default function Desktop(props: MacActions) {
     setState({
       ...state,
       maxApps: maxApps,
-      hideDockAndTopbar: target
+      // Never hide dock and topbar on mobile
+      hideDockAndTopbar: !isMobile && target
     });
   };
 
@@ -183,12 +184,21 @@ export default function Desktop(props: MacActions) {
       throw new TypeError(`App ${id} is undefined.`);
     }
 
+    // On mobile, maximize the window by default but keep dock visible
+    const maxApps = state.maxApps;
+    if (isMobile) {
+      maxApps[id] = true;
+    }
+
     setState({
       ...state,
       showApps: showApps,
       appsZ: appsZ,
       maxZ: maxZ,
-      currentTitle: currentApp.title
+      currentTitle: currentApp.title,
+      maxApps: maxApps,
+      // Never hide dock and topbar on mobile
+      hideDockAndTopbar: false
     });
 
     const minApps = state.minApps;

@@ -101,7 +101,8 @@ export default function DockItem({
       onClick={desktop || id === "launchpad" ? () => openApp(id) : () => {}}
       className="relative flex flex-col justify-end mb-1 touch-manipulation"
       style={{
-        WebkitTapHighlightColor: "transparent" // Remove tap highlight on mobile
+        WebkitTapHighlightColor: "transparent",
+        padding: isMobile ? "2px 0" : "0"
       }}
     >
       <p
@@ -109,7 +110,9 @@ export default function DockItem({
         p="x-3 y-1"
         text="sm c-black"
         style={{
-          display: isMobile ? "none" : "block" // Hide tooltips on mobile
+          display: isMobile ? "none" : "block",
+          bottom: "100%",
+          marginBottom: "4px"
         }}
       >
         {title}
@@ -124,9 +127,13 @@ export default function DockItem({
             draggable={false}
             style={
               isMobile
-                ? { width: `${(dockSize * 0.6) / 16}rem` }
+                ? {
+                    width: `${(dockSize * 0.75) / 16}rem`,
+                    height: `${(dockSize * 0.75) / 16}rem`,
+                    objectFit: "contain"
+                  }
                 : { width, willChange: "width" }
-            } // Reduced icon size on mobile
+            }
           />
         </a>
       ) : (
@@ -138,13 +145,20 @@ export default function DockItem({
           draggable={false}
           style={
             isMobile
-              ? { width: `${(dockSize * 0.6) / 16}rem` }
+              ? {
+                  width: `${(dockSize * 0.75) / 16}rem`,
+                  height: `${(dockSize * 0.75) / 16}rem`,
+                  objectFit: "contain"
+                }
               : { width, willChange: "width" }
-          } // Reduced icon size on mobile
+          }
         />
       )}
       <div
         className={`size-1 mx-auto rounded-full bg-c-800 ${isOpen ? "" : "invisible"}`}
+        style={{
+          marginTop: isMobile ? "2px" : "4px"
+        }}
       />
     </li>
   );

@@ -1,6 +1,7 @@
 import { useMotionValue } from "framer-motion";
 import { apps } from "~/configs";
-import { useStore } from "~/stores/useStore";
+import { useStore } from "~/stores";
+import DockItem from "./DockItem";
 
 interface DockProps {
   open: (id: string) => void;
@@ -40,19 +41,16 @@ export default function Dock({
     <div
       className={`dock fixed inset-x-0 mx-auto bottom-1 ${hide ? "z-0" : "z-50"}`}
       w="full sm:max"
-      overflow="x-scroll sm:x-visible"
-      style={{
-        WebkitOverflowScrolling: "touch"
-      }}
+      overflow="hidden"
     >
       <ul
-        className="flex space-x-2 px-2 backdrop-blur-2xl bg-c-white/20"
+        className="flex justify-center items-end space-x-2 px-2 backdrop-blur-2xl bg-c-white/20"
         border="~ c-400/40 rounded-none sm:rounded-xl"
         onMouseMove={(e) => !isMobile && mouseX.set(e.nativeEvent.x)}
         onMouseLeave={() => !isMobile && mouseX.set(null)}
         style={{
-          height: `${(dockSize + (isMobile ? 5 : 15)) / 16}rem`,
-          minWidth: "min-content"
+          height: `${(dockSize + (isMobile ? 12 : 15)) / 16}rem`,
+          padding: "4px 8px"
         }}
       >
         {apps.map((app) => (
@@ -68,6 +66,7 @@ export default function Dock({
             link={app.link}
             dockSize={dockSize}
             dockMag={dockMag}
+            isMobile={isMobile}
           />
         ))}
       </ul>
